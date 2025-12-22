@@ -1,6 +1,7 @@
 package com.catclient.duke.utils.client;
 
 import com.catclient.duke.Duke;
+import net.minecraft.client.resources.sounds.Sound;
 
 import javax.sound.sampled.*;
 import java.io.BufferedInputStream;
@@ -19,9 +20,7 @@ public class SoundUtils {
         if (!Duke.isCanPlaySound()) return;
         Multithreading.runAsync((() -> {
             try {
-                File file = new File(path);
-                FileInputStream fileInputStream = new FileInputStream(file);
-                BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+                BufferedInputStream bufferedInputStream = new BufferedInputStream(SoundUtils.class.getResourceAsStream("/Duke/sounds/" + path));
                 AudioInputStream audioIn = AudioSystem.getAudioInputStream(bufferedInputStream);
 
                 Clip clip = AudioSystem.getClip();

@@ -42,12 +42,12 @@ public class Module implements Wrapper {
         if (this.enabled == enabled) return;
         this.enabled = enabled;
         if (enabled) {
-            SoundUtils.playSound(soundFolder.getAbsolutePath() + "\\enable.wav", 1f);
+            SoundUtils.playSound("enable.wav", 1f);
             Duke.getInstance().getEventManager().register(this);
             onEnable();
         } else {
             Duke.getInstance().getEventManager().unregister(this);
-            SoundUtils.playSound(soundFolder.getAbsolutePath() + "\\disable.wav", 1f);
+            SoundUtils.playSound("disable.wav", 1f);
             onDisable();
         }
         Duke.getInstance().getConfigManager().saveConfig();

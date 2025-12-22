@@ -7,7 +7,11 @@ import com.catclient.duke.event.api.EventManager;
 import com.catclient.duke.module.ModuleManager;
 import com.catclient.duke.utils.client.LibraryUtils;
 import com.catclient.duke.utils.client.SoundUtils;
+import com.catclient.duke.utils.skia.context.SkiaContext;
 import com.google.gson.Gson;
+import com.mojang.blaze3d.pipeline.RenderCall;
+import com.mojang.blaze3d.platform.Window;
+import com.mojang.blaze3d.systems.RenderSystem;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 
@@ -35,7 +39,7 @@ public class Duke {
             instance = this;
             init(Class.forName("net.minecraft.client.Minecraft"));
             canPlaySound = true;
-            SoundUtils.playSound(CLIENT_FOLDER.getAbsolutePath() + "\\resources\\sounds\\opening.wav", 1f);
+            SoundUtils.playSound("opening.wav", 1f);
         } catch (Exception e) {
             System.out.println("[Duke] Failed to load Duke");
             e.printStackTrace();
@@ -70,6 +74,14 @@ public class Duke {
         System.out.println(Gson.class.getClassLoader());
         LibraryUtils.loadNatives();
         eventManager = new EventManager();
+        RenderSystem.recordRenderCall(new RenderCall() {
+            @Override
+            public void execute() {
+                Window window = Minecraft.getInstance().getWindow();
+                System.out.println("init skia");
+                SkiaContext.createSurface(window.getWidth(), window.getHeight());
+            }
+        });
         moduleManager = new ModuleManager();
         configManager = new ConfigManager();
         commandManager = new CommandManager();

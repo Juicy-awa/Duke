@@ -21,13 +21,7 @@ public interface Wrapper {
     HitResult hitResult = mc.hitResult;
     ClientPacketListener connection = mc.getConnection();
 
-    File resourcesFolder = new File(Duke.CLIENT_FOLDER, "\\resources");
-    File configFolder = new File(Duke.CLIENT_FOLDER, "\\config");
-    File mappingFolder = new File(Duke.CLIENT_FOLDER, "\\resources\\mapping\\");
-    File soundFolder = new File(Duke.CLIENT_FOLDER, "\\resources\\sounds\\");
-    File nativeFolder = new File(Duke.CLIENT_FOLDER, "\\resources\\natives\\");
-    File libFolder = new File(Duke.CLIENT_FOLDER, "\\resources\\libs\\");
-    File fontFolder = new File(Duke.CLIENT_FOLDER, "\\resources\\fonts\\");
+    File configFolder = Duke.CLIENT_FOLDER;
 
 //    URLClassLoader libCL = LibraryUtils.loadLibrary();
 }

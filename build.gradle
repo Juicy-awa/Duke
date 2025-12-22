@@ -157,6 +157,11 @@ dependencies {
     compileOnly fileTree(dir: 'libs', include: '*.jar')
     testCompileOnly fileTree(dir: 'libs', include: '*.jar')
 
+    // Skia
+    minecraftLibrary 'io.github.humbleui:types:0.2.0'
+    minecraftLibrary 'io.github.humbleui:skija-shared:0.116.4'
+    minecraftLibrary 'io.github.humbleui:skija-windows-x64:0.116.4'
+
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

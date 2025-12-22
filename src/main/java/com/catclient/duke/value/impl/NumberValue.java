@@ -19,46 +19,55 @@ public class NumberValue extends Value {
     private float value;
     private float min;
     private float max;
+    private float minValue;
+    private float maxValue;
     private boolean range;
+    private float step;
 
-    public NumberValue(String name, String cnName, float min, float max, Module parent, Supplier<Boolean> visible) {
+    public NumberValue(String name, String cnName, float min, float max, float minValue, float maxValue, float step, Module parent, Supplier<Boolean> visible) {
         super(name, cnName, parent, visible);
-        this.value = value;
         this.min = min;
         this.max = max;
+        this.minValue = minValue;
+        this.maxValue = maxValue;
         range = true;
+        this.step = step;
     }
 
-    public NumberValue(String name, String cnName, float min, float max, Module parent) {
+    public NumberValue(String name, String cnName, float min, float max, float minValue, float maxValue, float step, Module parent) {
         super(name, cnName, parent, () -> true);
-        this.value = value;
         this.min = min;
         this.max = max;
+        this.minValue = minValue;
+        this.maxValue = maxValue;
         range = true;
+        this.step = step;
     }
 
-    public NumberValue(String name, String cnName, float value, Module parent, Supplier<Boolean> visible) {
+    public NumberValue(String name, String cnName, float value, float min, float max, float step, Module parent, Supplier<Boolean> visible) {
         super(name, cnName, parent, visible);
         this.value = value;
         this.min = min;
         this.max = max;
         range = false;
+        this.step = step;
     }
 
-    public NumberValue(String name, String cnName, float value, Module parent) {
+    public NumberValue(String name, String cnName, float min, float max, float value, float step, Module parent) {
         super(name, cnName, parent, () -> true);
         this.value = value;
         this.min = min;
         this.max = max;
         range = false;
+        this.step = step;
     }
 
     public float get() {
-        if (range) return MathUtils.getRandomInRange(min, max);
+        if (range) return MathUtils.getRandomInRange(minValue, maxValue);
         else return value;
     }
 
     public float getRandom() {
-        return MathUtils.getRandomInRange(min, max);
+        return MathUtils.getRandomInRange(minValue, maxValue);
     }
 }

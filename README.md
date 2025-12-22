@@ -13,6 +13,7 @@ Heypixel inject base
  - **ASM 注入框架** —— 作者：Loratadine (Cherish)；修改：[玖弦](https://github.com/jiuxianqwq)、[手淫](https://github.com/ishowbypass/)
  - **Loader & redefine（NativeUtils）** —— 参考自：[Minecraft-Injectable-Client-Base](https://github.com/ishowbypass/Minecraft-Injectable-Client-Base)；作者：[手淫](https://github.com/ishowbypass/)
  - **事件系统（EventManager）** —— 参考自：[cubk/EventManager](https://github.com/cubk1/EventManager)；作者：[cubk](https://github.com/cubk1)
+ - **Skia 渲染** —— 参考自：[SoarClient](https://github.com/Soar-Client/SoarClient)
 
 ## 社区交流 / Community
 

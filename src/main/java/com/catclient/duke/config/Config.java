@@ -62,8 +62,8 @@ public class Config implements Wrapper {
                     if (v instanceof NumberValue nv) {
                         if (nv.isRange()) {
                             JsonObject nvObject = new JsonObject();
-                            nvObject.addProperty("Max", nv.getMax());
-                            nvObject.addProperty("Min", nv.getMin());
+                            nvObject.addProperty("Max", nv.getMaxValue());
+                            nvObject.addProperty("Min", nv.getMinValue());
                             valueObject.add(nv.getEnName(), nvObject);
                         } else {
                             valueObject.addProperty(nv.getEnName(), nv.get());
@@ -130,9 +130,9 @@ public class Config implements Wrapper {
                                             if (nv.isRange()) {
                                                 JsonObject nvObject = valueObject.getAsJsonObject(v.getEnName());
                                                 if (nvObject.has("Max"))
-                                                    nv.setMax(nvObject.get("Max").getAsFloat());
+                                                    nv.setMaxValue(nvObject.get("Max").getAsFloat());
                                                 if (nvObject.has("Min"))
-                                                    nv.setMin(nvObject.get("Min").getAsFloat());
+                                                    nv.setMinValue(nvObject.get("Min").getAsFloat());
                                             } else {
                                                 nv.setValue(valueObject.get(v.getEnName()).getAsFloat());
                                             }

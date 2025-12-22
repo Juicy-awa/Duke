@@ -17,7 +17,7 @@ public class MappingUtils implements Wrapper {
 
     static {
         try {
-            mappingFile = IMappingFile.load(new File(mappingFolder.getAbsolutePath() + "\\mappings.tsrg"));
+            mappingFile = IMappingFile.load(MappingUtils.class.getResourceAsStream("/Duke/mapping/mappings.tsrg"));
         } catch (IOException e) {
             e.printStackTrace();
         }

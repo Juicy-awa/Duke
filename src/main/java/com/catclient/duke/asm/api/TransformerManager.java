@@ -2,8 +2,11 @@ package com.catclient.duke.asm.api;
 
 import a.ASMTransformers.ClientPacketListenerTransformer;
 import a.ASMTransformers.ConnectionTransformer;
+import a.ASMTransformers.GuiTransformer;
 import a.ASMTransformers.KeyboardHandlerTransformer;
 import a.ASMTransformers.LocalPlayerTransformer;
+import a.ASMTransformers.WindowTransformer;
+import a.ASMTransformers.MinecraftTransformer;
 import a.a;
 import com.catclient.duke.Duke;
 import org.objectweb.asm.Opcodes;
@@ -35,11 +38,13 @@ public class TransformerManager {
 
         try {
 //            在这里注册你的变形金刚
-//            transformer.addTransformer(new MinecraftTransformer());
+            transformer.addTransformer(new MinecraftTransformer());
             transformer.addTransformer(new KeyboardHandlerTransformer());
             transformer.addTransformer(new LocalPlayerTransformer());
             transformer.addTransformer(new ConnectionTransformer());
             transformer.addTransformer(new ClientPacketListenerTransformer());
+            transformer.addTransformer(new WindowTransformer());
+            transformer.addTransformer(new GuiTransformer());
 
             for (ASMTransformer asmTransformer : TransformerManager.transformer.transformers) {
                 a.a(asmTransformer.getTarget());
